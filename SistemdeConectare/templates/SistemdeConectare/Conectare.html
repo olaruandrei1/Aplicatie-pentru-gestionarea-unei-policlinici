@@ -1,0 +1,87 @@
+{% extends 'Gestiune/Extensie.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block Titlu %} HOS - Conectează-te! {% endblock Titlu %}
+
+{% block Continut%}
+<a href="{% url 'Gestiune-PaginadeStart' %}" style="position:absolute;"><button class="btn btn-info m-5 rounded btn-sm"><i class="fa-solid fa-backward text-white"></i></button></a>
+
+<section class="vh-100" style="background-image:url('{%static 'Gestiune/Imagini/imaginelogin2.jpg' %}');background-repeat: no-repeat;background-size: cover;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-12">
+        <div class="card" style="border-radius: 1rem;">
+          <div class="row g-0">
+            <div class="col-md-6 col-lg-5 d-none d-md-block">
+              <img src="{% static 'Gestiune/Imagini/imaginelogin.jpg' %}" class="img-fluid" style="border-radius: 1rem 0 0 1rem; height: 100%" />
+            </div>
+            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+              <div class="card-body p-4 p-lg-5 text-black">
+                <div class="d-flex align-items-center mb-3 pb-1">
+                  <i class="fa-solid fa-briefcase-medical fa-2x me-3 text-danger" style="color: #ff6219;"></i>
+                  <span class="h1 fw-bold mb-0">HOS</span>
+                </div>
+                <form method="POST">
+                  {% csrf_token %}
+                  <div class="form-group p-3 text-center">
+                    <fieldset class="form-group">
+                      <legend class="border-bottom mb-4">
+                        Nume de utilizator:
+                        </legend>
+                      <!-- {{form|crispy}} -->
+                      {{form.username}}
+                      </fieldset>
+
+
+                  </div>
+                  <div class="form-group p-3 text-center">
+                    <fieldset class="form-group">
+                      <legend class="border-bottom mb-4">
+                        Parolă:
+                        </legend>
+                      <!-- {{form|crispy}} -->
+                      {{form.password}}
+                      </fieldset>
+
+
+                  </div>
+                  <div class="text-center mt-3">
+
+
+                    <button class="btn btn-info" style="font-size:15px" type="submit"><B>Conectează-te</B></button>
+                  </div>
+
+                </form>
+                {% if form.errors %}
+
+                <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                <script>
+                  swal("Upsss !", "A avut loc o eroare în procesul de conectare. Vă rugăm să reintroduceți credențialele!", "error")
+                </script>
+
+                {% endif %}
+                <div style="margin-top:120px;">
+                  <a class="small text-white" href="{% url 'password_reset' %}"><button type="button" class="btn btn-secondary" style="float:right;">Ți-ai uitat parola?&nbsp;<i class="fa fa-diamond ml-1"></i></button></a>
+                  <a href="{% url 'Inregistrare' %}"><button type="button" class="btn btn-secondary" style="float:left;">Ești nou? Înregistrează-te&nbsp;<i class="fa fa-user-o ml-1"></i></button></a>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  .form-control {
+    text-align: center;
+  }
+
+  .form-control:focus {
+
+    border-color: red;
+    box-shadow: 0 0 0 0.2rem red;
+  }
+</style>
+{% endblock Continut%}

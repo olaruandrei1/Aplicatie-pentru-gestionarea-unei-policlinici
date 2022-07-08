@@ -1,0 +1,188 @@
+{% extends 'Gestiune/Extensie.html' %}
+{% load static %}
+<title>{% block Titlu %} HOS - Despre noi. {% endblock Titlu %}</title>
+{% block Continut %}
+<a href="{% url 'Gestiune-PaginadeStart' %}" style="position:absolute;"><button class="btn btn-info m-5 rounded btn-sm"><i class="fa-solid fa-backward text-white"></i></button></a>
+
+<img src="{% static 'Gestiune/Imagini/logo.png' %}" class="blink_me" style="width:200px;  margin-left:850px; position:absolute; " />
+
+
+
+<div class="text-center" , style="font-size:1.2rem;
+ justify-content:center;
+ text-align:center;
+ margin-top: 230px;
+ margin-left:125px;
+ margin-right:125px;
+ background-color:white;
+ border:1px solid white;
+ border-radius:10px;
+ box-shadow:0 0 10px 10px white;">
+
+
+  <dl class="row rounded">
+    <dt class="col-sm-3"><b>Descrierea aplicației</b></dt>
+    <dd class="col-sm-9"> HOS este o aplicație WEB, realizată de Olaru Andrei, student în cadrul Universității Ovidius Constanța, Facultatea de Matematică și Informatică, specializarea Informatică, aplicația reprezentând proba practică a lucrării de
+      licență&nbsp; <i class=" text-success fa-solid fa-graduation-cap "></i>.<br>
+      <span class="text-danger"><b>ATENȚIE&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-exclamation text-primary fa-xl"></i>&nbsp;&nbsp; CONȚINUTUL ACESTEI APLICAȚII ESTE UNUL FICTIV &nbsp;&nbsp;&nbsp;<i class="fa-solid fa-exclamation text-primary fa-xl"></i></b></span>
+    </dd>
+
+    <dt class="col-sm-3">Titlul lucrării: </dt>
+    <dd class="col-sm-9">
+      <p>Aplicație WEB pentru gestiunea unei policlinici.&nbsp;<i class="fa-solid fa-laptop text-danger"></i></p>
+    </dd>
+
+    <dt class="col-sm-3">Coordonator știintific:</dt>
+    <dd class="col-sm-9">Lect. univ. dr. Rusu Andrei.</dd>
+
+    <dt class="col-sm-3 text-truncate">Tehnologii utilizate:</dt>
+    <dd class="col-sm-9">HTML5, CSS3, JavaScript, JQuery, Django, PostGreSQL.&nbsp;<i class="fa-solid fa-code text-primary"></i></dd>
+
+    <dt class="col-sm-3">Promoție universitară:</dt>
+    <dd class="col-sm-9">
+      <dl class="row">
+        <dt class="col-sm-4">2019-2022</dt>
+        <dd class="col-sm-8"> <em>Universitatea Ovidius Constanța</em>
+
+      </dl>
+    </dd>
+  </dl>
+
+</div>
+
+
+
+<div class="container" style="margin-left:780px;margin-top:40px">
+  <div class="row">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="our-team">
+        <div class="picture">
+          <img class="" src="{% static 'Gestiune/Imagini/imagineu.jpg' %}">
+        </div>
+        <div class="team-content">
+          <h3 class="name">Olaru Andrei</h3>
+          <h4 class="title">Junior Web Developer</h4>
+        </div>
+        <ul class="social">
+          <li><a href="https://www.facebook.com/OlaruAndrei828/" class="fa fa-facebook" aria-hidden="true"></a></li>
+          <li><a href="https://www.instagram.com/olaruandrei1/" class="fa fa-instagram" aria-hidden="true"></a></li>
+          <li><a href="https://www.linkedin.com/in/andrei-olaru-6a471a190/" class="fa fa-linkedin" aria-hidden="true"></a></li>
+        </ul>
+      </div>
+    </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+<style>
+
+.our-team {
+  padding: 30px 0 40px;
+  margin-bottom: 30px;
+  background-color: #f7f5ec;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.our-team .picture {
+  display: inline-block;
+  height: 130px;
+  width: 130px;
+  margin-bottom: 50px;
+  z-index: 1;
+  position: relative;
+}
+
+.our-team .picture::before {
+  content: "";
+  width: 100%;
+  height: 0;
+  border-radius: 50%;
+  background-color: #1369ce;
+  position: absolute;
+  bottom: 135%;
+  right: 0;
+  left: 0;
+  opacity: 0.9;
+  transform: scale(3);
+  transition: all 0.3s linear 0s;
+}
+
+.our-team:hover .picture::before {
+  height: 100%;
+}
+
+.our-team .picture::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #1369ce;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.our-team .picture img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  transform: scale(1);
+  transition: all 0.9s ease 0s;
+}
+
+.our-team:hover .picture img {
+  box-shadow: 0 0 0 14px #f7f5ec;
+  transform: scale(0.7);
+}
+
+.our-team .title {
+  display: block;
+  font-size: 15px;
+  color: #4e5052;
+  text-transform: capitalize;
+}
+
+.our-team .social {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: #1369ce;
+  position: absolute;
+  bottom: -100px;
+  left: 0;
+  transition: all 0.5s ease 0s;
+}
+
+.our-team:hover .social {
+  bottom: 0;
+}
+
+.our-team .social li {
+  display: inline-block;
+}
+
+.our-team .social li a {
+  display: block;
+  padding: 10px;
+  font-size: 17px;
+  color: white;
+  transition: all 0.3s ease 0s;
+  text-decoration: none;
+}
+
+.our-team .social li a:hover {
+  color: #1369ce;
+  background-color: #f7f5ec;
+}
+
+body{
+  background-image: url({% static 'Gestiune/Imagini/imaginedesprebackground.jpg' %});
+}
+</style>
+{% endblock Continut %}
