@@ -1,0 +1,94 @@
+{% extends 'Gestiune/Extensie2.html' %}
+{% load static %}
+{% block Titlu %} HOS - Contact {% endblock Titlu %}
+
+
+{% block Continut2 %}
+<section class="mb-4 text-light">
+
+  <h2 class="h1-responsive font-weight-bold text-center my-4">Contactează-ne!</h2>
+  <p class="text-center w-responsive mx-auto mb-5">Bine ai venit la secțiunea de contact. Te rog să ne anunți orice problemă tehnică întâlnită.</p>
+
+  <div class="row">
+
+    <div class="col-md-9 mb-md-0 mb-5">
+      <form id="contact-form" name="contact-form" action="{% url 'Gestiune-Contact' %}" method="POST">
+        {% csrf_token %}
+
+        <!--Grid row-->
+        <div class="row">
+          <!--Grid column-->
+          <div class="col-md-6">
+            <div class="md-form mb-0">
+              <input type="text" id="name" name="name" class="form-control text-light">
+              <label for="name" class="text-light">Nume de utilizator:</label>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="md-form mb-0">
+              <input type="text" id="email" name="email" class="form-control text-light">
+              <label for="email" class="text-light">Adresa de email:</label>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="md-form mb-0">
+              <input type="text" id="subject" name="subject" class="form-control text-light">
+              <label for="subject" class="text-light">Subiect:</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-12">
+
+            <div class="md-form">
+              <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea text-light"></textarea>
+              <label for="message">Mesaj:</label>
+            </div>
+
+          </div>
+        </div>
+
+      </form>
+
+      <div class="text-center text-md-left">
+        <a class="btn btn-danger" onclick="document.getElementById('contact-form').submit();"><i class="fa-solid fa-at"></i>&nbsp;<b>trimite</b></a>
+      </div>
+      <div class="status"></div>
+    </div>
+    </form>
+
+    <div class="col-md-3 text-center">
+      <ul class="list-unstyled mb-0">
+        <li><i class="fas fa-map-marker-alt fa-2x text-danger"></i>
+          <p>Constanta, Strada Olărescu numărul 22</p>
+        </li>
+
+        <li><i class="fas fa-phone mt-4 fa-2x text-danger"></i>
+          <p>+4073832614</p>
+        </li>
+
+        <li><i class="fas fa-envelope mt-4 fa-2x text-danger"></i>
+          <p>holaruservices@gmail.com</p>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+  {% if form.errors %}
+
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script>
+    swal("Upsss !", "A avut loc o eroare în procesul de trimitere. Vă rugăm să reîncercați!", "error")
+  </script>
+
+  {% endif %}
+
+</section>
+{% endblock Continut2 %}

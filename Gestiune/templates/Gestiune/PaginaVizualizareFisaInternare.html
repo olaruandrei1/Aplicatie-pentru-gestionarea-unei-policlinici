@@ -1,0 +1,132 @@
+{% extends 'Gestiune/Extensie2.html' %}
+{% load static %}
+{% block Titlu %} HOS - Vizualizare fisă internare {% endblock Titlu %}
+{% block Titlu-Pagina %}
+<h4 class="text-disable" style="margin-top:-4.1%;margin-left:13.5%">
+  Vizualizare fișă internare
+</h4>
+{% endblock Titlu-Pagina %}
+
+
+{% block Continut2 %}
+<div class="row text-center">
+  <div class="col-log-12 col-sm">
+    <form method="POST" autocomplete="off" enctype="multipart/form-data" class="card p-3 mt-3 rounded" style="background-color: rgba(48, 48, 48);">
+      {% csrf_token %}
+      <div class="input-group input-group-sm mb-1 w-75">
+        <span class="input-group-text border-0 side-label" style="background-color: rgba(48, 48, 48);"><i class="fa-solid fa-signature text-white fa-xl"></i></span>
+        &nbsp;&nbsp;&nbsp;
+        <p class="form-control bg-dark border-0 text-center text-light rounded mt-3 w-50">
+          {{object.pacient.numeprenumepacient}}
+        </p>
+        &nbsp;&nbsp;&nbsp;
+        <span class="input-group-text border-0 side-label" style="background-color: rgba(48, 48, 48);"><i class="fa-solid fa-fingerprint text-white fa-xl"></i></span>
+        &nbsp;
+        <p class="form-control bg-dark border-0 text-center text-light rounded mt-3 ">
+          {{object.pacient.id}}
+        </p>
+
+      </div>
+      <div class="input-group input-group-sm mb-1 w-75">
+        <span class="input-group-text border-0 side-label mb-3" style="background-color: rgba(48, 48, 48);"><i class="fa-solid fa-key fa-xl text-white"></i>></i></span>
+        &nbsp;&nbsp;
+        <textarea readonly style=" height: 5px; overflow:hidden;" row= "1" class="form-control bg-dark border-0 text-center text-light rounded "value="{{object.CNP_Pacient}}" type="text" id="CNP_Pacient">
+          {{object.CNP_Pacient}}
+        </textarea>
+        <button type="button"class="border-0 mb-2 " style="float: right; background-color: rgba(48, 48, 48);" onclick=" myFunction()"><i class="fa-solid fa-file-import fa-xl text-danger"></i></button>
+        <script>
+          function myFunction() {
+            var cnp = document.getElementById("CNP_Pacient");
+
+            cnp.select("CNP_Pacient");
+            cnp.setSelectionRange(0, 99999); 
+
+            navigator.clipboard.writeText(cnp.value);
+
+            alert("CNP copiat: " + cnp.value);
+          }
+
+    </script>
+      </div>
+      <div class="input-group input-group-sm mb-1 w-75">
+        <span class="input-group-text border-0 side-label mb-3" style="background-color: rgba(48, 48, 48);"><i class="fa-solid fa-hospital fa-xl text-white"></i></span>
+        &nbsp;&nbsp;&nbsp;
+        <p class="form-control bg-dark border-0 text-center text-light rounded ">
+          {{object.sectie_internare}}
+        </p>
+      </div>
+      <div class="input-group input-group-sm mb-1 w-75">
+        <span class="input-group-text border-0 side-label mb-3" style="background-color: rgba(48, 48, 48);"><i class="fa-solid fa-virus fa-xl text-white"></i></span>
+        &nbsp;&nbsp;&nbsp;
+        <p class="form-control bg-dark border-0 text-center text-light rounded " style="margin-left:2px;">
+          {{object.diagnostic_int_initial}}
+        </p>
+      </div>
+      <div class="input-group input-group-sm mb-1 w-75">
+        <span class="input-group-text side-label border-0 mb-3" style="background-color: rgba(48, 48, 48);"><i class="fa-solid fa-right-to-bracket fa-xl text-white"></i></span>
+        &nbsp;&nbsp;&nbsp;
+        <!-- <input type="text" class="form-control bg-dark border-0 text-center text-light" name="varsta_Pacient" id="varsta_Pacient" maxlength="3" placeholder="Vârsta aproximativă:" {% block Value-varsta_Pacient %} {% endblock Value-varsta_Pacient %}> -->
+        <p style="margin-left:2px;" class="form-control bg-dark border-0 text-center text-light rounded " placeholder="Vârsta:">
+          {{object.created_at}}
+        </p>
+      </div>
+      <div class="input-group input-group-sm mb-1 w-75">
+        <label class="input-group-text side-label border-0 mb-3" style="background-color: rgba(48, 48, 48);"><i class="fa-solid fa-right-from-bracket fa-xl text-white"></i></label>
+          &nbsp;&nbsp;&nbsp;
+        <p style="margin-left:2px;" class="form-control bg-dark border-0 text-center text-light rounded ">
+          {{object.Data_externare_internare}}
+        </p>
+      </div>
+      <div class="input-group input-group-sm mb-1 w-50 ">
+        <a class="text-danger " href="{% url 'Gestiune-PaginaEditareFisaInternare' object.id %}"><i class="fa-solid fa-pen-to-square fa-xl"></i></a>
+        &nbsp;&nbsp;&nbsp;
+        <a class="text-danger" href="{% url 'Gestiune-PaginaStergereFisaInternare' object.id %}"><i class="fa-solid fa-trash-can fa-xl"></i></a>
+      </div>
+
+  </div>
+  <div class="col-sm">
+    <div class="input-group input-group-sm mb-1 w-75 m-4">
+      <label class="input-group-text side-label border-0 mb-3" style="background-color: rgba(48, 48, 48);"><i class="fa-solid fa-virus-slash fa-xl text-white"></i></label>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <textarea readonly class="form-control bg-dark border-0 text-center text-light rounded ">
+        {{object.Epicriza_internare}}
+      </textarea>
+    </div>
+
+    <div class="input-group input-group-sm mb-1 w-75 m-4">
+      <label class="input-group-text side-label border-0 mb-3" style="background-color: rgba(48, 48, 48);"><i class="fa-solid fa-id-card fa-xl text-white"></i></label>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <p class="form-control bg-dark border-0 text-center text-light rounded ">
+        {{object.id}}
+      </p>
+
+    </div>
+    </form>
+
+
+{%endblock Continut2 %}
+
+
+
+
+
+
+
+
+{% block Btn-principal %}
+    <i class="fas fa-hdd"></i>&nbsp;&nbsp;Editează
+{% endblock Btn-principal %}
+
+{% block Btn-reseteaza %}
+<button type="reset" class="btn btn-danger rounded btn-sm" style="margin-left:7%"><i class="fas fa-sync-alt"></i>&nbsp;&nbsp;Resetează</button>
+{% endblock Btn-reseteaza %}
+
+{% block Id-hidden %}
+
+{% endblock Id-hidden %}
+{% block Id-hidden-fp %}
+
+{% endblock Id-hidden-fp %}
+{% block Id-hidden-fpi %}
+
+{% endblock Id-hidden-fpi %}

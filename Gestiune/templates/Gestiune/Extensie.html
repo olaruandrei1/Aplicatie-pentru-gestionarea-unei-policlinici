@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+  <!-- Import de tip meta de baza -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Dezvoltatorul aplicatiei -->
+  <meta name="author" content="Olaru Andrei">
+  <!-- Descrierea site-ului/aplicatiei web -->
+  <meta name="description" content="HOS - Aplicatie WEB pentru gestiunea unei policlinici.">
+  <!-- Import logo. Mulțumiri pentru acest logo, ce a fost realizat de "Rițco Robert": https://www.behance.net/ritcoroberd5bc -->
+  <link href="{% static 'Gestiune/Imagini/logo.ico' %}" rel="shortcut icon">
+  <!--Import CSS, din folderul 'static'-->
+  <link rel="stylesheet" type="text/css" href="{% static 'Gestiune/CSS/style.css' %}">
+  <!-- Import Font Awesome, folosind tehnologia CDN, de pe site-ul oficial FontAwesome:"https://fontawesome.com/", pentru a putea accesa variatatea de iconite(icons) -->
+  <script src="https://kit.fontawesome.com/41371ba344.js" crossorigin="anonymous"></script>
+  <!-- Import Bootstrap 5.2.0, folosind tehnologia CDN, de pe site-ul oficial al extensiei Bootstrap:"https://getbootstrap.com", pentru CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <!--Import JQuery, folosind tehnologia CDN, de pe site-ul oficial JQuery:https://releases.jquery.com/-->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" integrity="sha512-Eak/29OTpb36LLo2r47IpVzPBLXnAMPAVypbSZiZ4Qkf8p/7S/XRG5xp7OKWPPYfJT6metI+IORkR5G8F900+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <title>{% block Titlu %} HOS {% endblock Titlu %}</title>
+
+</head>
+
+<body style="font-family: 'Poppins', sans-serif;">
+  <!-- Import Bootstrap 5.2, folosind tehnologia CDN, de pe site-ul oficial al extensiei Bootstrap, pentru Javascript. -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  <!-- Import JQuery 3.6.0, folosind tehnologia CDN, de pe site-ul oficial al extensiei Bootstrap:"https://releases.jquery.com/", pentru extensia JQuery. -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <!-- Import Javascript, din folderul 'static' -->
+  <script src={% static "Gestiune/Javascript/main.js" %}></script>
+  <!-- Import o serie de animatii de tip Javascript, ce contin mesaje de tip pop-up.-->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <!-- Import o serie de unelte JavaScript, respectiv CSS, folosind tehnologia CDN, de pe site-ul cloudflare -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0-beta1/css/bootstrap.min.css" integrity="sha512-o/MhoRPVLExxZjCFVBsm17Pkztkzmh7Dp8k7/3JrtNCHh0AQ489kwpfA3dPSHzKDe8YCuEhxXq3Y71eb/o6amg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.20.0/css/mdb.min.css" integrity="sha512-hj9rznBPdFg9A4fACbJcp4ttzdinMDtPrtZ3gBD11DiY3O1xJfn0r1U5so/J0zwfGOzq9teIaH5rFmjFAFw8SA==" crossorigin="anonymous"
+    referrerpolicy="no-referrer" />
+  <script text="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"
+    referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.5/umd/popper.min.js" integrity="sha512-8cU710tp3iH9RniUh6fq5zJsGnjLzOWLWdZqBMLtqaoZUA6AWIE34lwMB3ipUNiTBP5jEZKY95SfbNnQ8cCKvA==" crossorigin="anonymous"
+    referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0-beta1/js/bootstrap.min.js" integrity="sha512-Hqe3s+yLpqaBbXM6VA0cnj/T56ii5YjNrMT9v+us11Q81L0wzUG0jEMNECtugqNu2Uq5MSttCg0p4KK0kCPVaQ==" crossorigin="anonymous"
+    referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.20.0/js/mdb.min.js" integrity="sha512-XFd1m0eHgU1F05yOmuzEklFHtiacLVbtdBufAyZwFR0zfcq7vc6iJuxerGPyVFOXlPGgM8Uhem9gwzMI8SJ5uw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+  {% if messages %}
+    {% for message in messages %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+      var m = "{{ message }}";
+      swal("Ups!", m, "error")
+    </script>
+    {% endfor %}
+  {% endif %}
+  {% block Continut %} {% endblock Continut %}
+  <script src={% static "Gestiune/Javascript/main.js" %}></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <!--import JQuery cu CDN-->
+   <!--Librarie pentru jQuery cu CDN: InputMask-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8-beta.17/jquery.inputmask.min.js" integrity="sha512-zdfH1XdRONkxXKLQxCI2Ak3c9wNymTiPh5cU4OsUavFDATDbUzLR+SYWWz0RkhDmBDT0gNSUe4xrQXx8D89JIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!--SweetAlert js, de pe site ul lor, pentru mesaje de tip pop-up-->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <!-- Static JS import dar cel din folderul Static, adica al nostru(codu nostru de js) -->
+
+
+</body>
+
+<footer class="bg-dark text-center text-lg-start text-light rounded-top rounded-right rounded-left" id="footer">
+  <div class="text-center p-3" style="background-color: rgba(0,0,0,0.2);">
+    Copyright &copy; {% now "Y" %} <span>All rights reserved</span> |
+    <i class="text-danger fas fa-heartbeat blink_me" style="font-size: 15px;"></i> by
+    <a href="#" target="_blank" style="color: #0dcaf0;text-decoration:none;">Olaru Andrei</a>
+  </div>
+</footer>
+
+</html>

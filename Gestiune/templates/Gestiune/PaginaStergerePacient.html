@@ -1,0 +1,47 @@
+{% extends 'Gestiune/Extensie2.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block Titlu %} HOS - Ștergere pacient {% endblock Titlu %}
+
+{% block Continut2 %}
+<h3 class="text-center text-danger">Ștergere profil</h3>
+<h2 class="text-center text-light">Ești 100% sigur că vrei să ștergi acest profilul pacientului <b class="text-danger">{{object.numeprenumepacient}}</b> ?</h2>
+<form method="POST">
+  {% csrf_token %}
+
+  <div class="col-sm">
+    <button  class="btn btn-outline-danger rounded w-25 mt-5" type="submit">
+      <i class="fas fa-user-slash fa-xl"></i>&nbsp;&nbsp;<B>Șterge</B>
+    </button>
+      <a class="btn btn-outline-danger rounded mt-5" href="{% url 'Gestiune-PaginaVizualizarePacient' object.id %}"><i class="fa-solid fa-ban"></i>&nbsp;&nbsp;Anulează</a>
+  </div>
+  {% for message in messages %}
+
+  {% if message.tags == 'success' %}
+  <link rel="stylesheet" href="@sweetalert2/theme-dark/dark.css">
+  <script src="sweetalert2/dist/sweetalert2.min.js"></script>
+  <script>
+    var m = "{{ message }}";
+    swal("În regulă!", m, "success")
+  </script>
+
+  {% endif %}
+  {% endfor %}
+  </form>
+
+
+
+
+  <!--ID ascuns-->
+  {% block Id-hidden %}
+
+  {% endblock Id-hidden %}
+  {% block Id-hidden-fp %}
+
+  {% endblock Id-hidden-fp %}
+  {% block Id-hidden-fpi %}
+
+  {% endblock Id-hidden-fpi %}
+
+{% endblock Continut2 %}

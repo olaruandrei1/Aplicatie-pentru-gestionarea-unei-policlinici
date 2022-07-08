@@ -1,0 +1,123 @@
+{% extends 'Gestiune/Extensie2.html' %}
+{% load static %}
+{% block Titlu %} HOS - Pagină Principală {% endblock Titlu %}
+
+
+{% block Continut2 %}
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .form-control-underlined {
+    border-width: 0;
+    border-bottom-width: 1px;
+    border-radius: 0;
+    padding-left: 0;
+  }
+
+  .form-control:focus {
+
+    border-color: red;
+    box-shadow: 0 0 0 0.1rem red;
+  }
+</style>
+<link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.js"></script>
+<form>
+  <div class="input-group justify-content-center ">
+    <div class="form-outline text-center">
+      <input name="q" id="q" type="search" id="form1" class="form-control bg-dark border-dark text-white text-center " placeholder="Caută pacient:" value="{{request.GET.q}}" />
+      <button type="button" class="btn btn-danger rounded-circle btn-sm mt-4 " style=""><i class="fas fa-search"></i></button>
+      <a href="{% url 'Gestiune-PaginaPrincipala' %}" class="btn btn-dark btn-sm text-white rounded-circle mt-4" style=""><i class="fas fa-sync-alt"></i></a>
+      <a href="{% url 'Gestiune-PaginaAdaugarePacient' %}"><button type="button" class="btn btn-danger btn-sm text-white rounded-circle mt-4 " ><b><i class="fa-solid fa-user-plus"></i></b></button></a>
+    </div>
+  </div>
+</form>
+<center>
+  <div class="table-responsive ">
+    <table class="table table-hover table-dark table-sm mt-2 table-striped justify-content-center" style="text-align: center; font-size:7px; ">
+
+      <thead class="center">
+        <tr>
+          <th style="width:2%;"><i class="fa-solid fa-at"></i></th>
+          <th style="width:10%;">Nume/Prenume</th>
+          <th style="width:10%;">CNP</th>
+          <th style="width:10%;">Telefon</th>
+          <th style="width:10%;">Email</th>
+          <th style="width:10%;">Sex</th>
+          <th style="width:10%;">Tip ședere/cetățenie</th>
+          <th style="width:10%;">Inregistrat</th>
+          <th style="width:10%;"><i class="fa-brands fa-cloudversify"></i></th>
+        </tr>
+      </thead>
+      {% for Pacient in pacienti %}
+      <tbody>
+        <tr scope="row" id="chk_td">
+          <td>{{ Pacient.id }}</td>
+          <td>{{ Pacient.numeprenumepacient }}</td>
+          <td>{{ Pacient.CNP_Pacient }}</td>
+          <td>{{ Pacient.telefon_Pacient }}</td>
+          <td>{{ Pacient.emailPacient }}</td>
+          <td>{{ Pacient.optiune_gen }}</td>
+          <td>{{ Pacient.tip_cetatenie }}</td>
+          <td>{{ Pacient.created_at | date:'d/m/Y (H:i)' }}</td>
+          <td>
+            <a class="text-danger" href="/PaginaVizualizarePacient/{{ Pacient.id }}" title="Vezi profil">
+              <i class="fa-solid fa-eye fa-xl"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+
+
+
+  </div>
+  {% endfor %}
+  </table>
+</center>
+
+{% if is_paginated %}
+  {% if page_obj.has_previous %}
+    <a class=" btn btn-sm btn-outline-danger mb-4 "href="?page=1">Prima pagină</a>
+    <a class=" btn btn-sm btn-outline-danger mb-4 "href="?page={{ page_obg.previous_page_number}}">Prima pagină</a>
+  {% endif %}
+  {% for num in page_obj.paginator.page_range %}
+    {% if page_obj.number == num %}
+      <a class=" btn btn-sm btn-danger mb-4 "href="?page={{ num }}">{{ num }}</a>
+    {% elif num > page_obj.number|add:'-4' and num < page_obj.number|add:'+4' %}
+      <a class=" btn btn-sm btn-outline-danger mb-4 "href="?page={{ num }}">{{ num }}</a>
+    {% endif %}
+  {% endfor %}
+  {% if page_obj.has_next %}
+    <a class=" btn btn-sm btn-outline-danger mb-4 "href="?page={{ page_obg.next_page_number}}">Următoarea pagină</a>
+    <a class=" btn btn-sm btn-outline-danger mb-4 "href="?page={{ page_obg.paginator.num_pages}}">Ultima pagină</a>
+  {% endif %}
+{% endif %}
+
+
+{% for message in messages %}
+
+{% if message.tags == 'success' %}
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+  var m = "{{ message }}";
+  swal("În regulă!", m, "success")
+</script>
+
+{% endif %}
+{% endfor %}
+
+<!--ID ascuns-->
+{% block Id-hidden %}
+
+{% endblock Id-hidden %}
+{% block Id-hidden-fp %}
+
+{% endblock Id-hidden-fp %}
+{% block Id-hidden-fpi %}
+
+{% endblock Id-hidden-fpi %}
+
+{% endblock Continut2 %}

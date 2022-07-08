@@ -1,0 +1,92 @@
+{% extends 'Facturare/Extensie3.html' %}
+{% block Continut3 %}
+<title>{% block Titlu %} HOS - Listă Facturi {% endblock Titlu %}</title>
+
+<div class="columns is-centered has-text-centered">
+    <div class="column is-half">
+        <div class="card has-background-white-ter">
+            <h1 class="title is-3"></h1>
+        </div>
+    </div>
+</div>
+<form action="{% url 'Facturare-FacturaList' %}" method="POST">
+  {% csrf_token %}
+    <div class="card bg-dark">
+        <header class="card-header">
+            <p class="card-header-title mb-4 text-light">
+                <b>Toate facturile emise</b>
+            </p>
+
+                <a href="{% url 'Facturare-adauga_factura' %}" class="btn btn-outline-danger btn-sm mb-5 text-light bg-danger rounded" style="float:right">Factura nouă!</a>
+        </header>
+        <div class="card-content">
+            <div class="content">
+
+                <table class="table table-hover table-dark  is-bordered bg-dark text-light">
+                    <tbody>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th class="text-light">Factură</th>
+                                <th class="text-light">Pacient</th>
+                                <th class="text-light">Dată emitere</th>
+                                <th class="text-light">Dată expirare</th>
+                                <th class="text-light">Balanță</th>
+                                <th class="text-light">Total</th>
+                                <th class="text-light">Status</th>
+                                <th class="text-light">Vizualizare</th>
+
+                            </tr>
+                        </thead>
+                        {% for Factura in facturi %}
+                        <tr>
+                            <td><input class="checkbox" type="checkbox" value="{{Factura.id}}" name="facturi_id" size="1" />
+                            </td>
+                            <td width="1%">#{{Factura.id}}</td>
+                            <td width="9%">{{Factura.pacient}}</td>
+                            <td> {{Factura.data_emitere}}</td>
+                            <td> {{Factura.data_expirare}} </td>
+                            <td width="1%"></td>
+                            <td>{{Factura.total_amount}}</td>
+                            <td class="text-center">
+                                {% if factura.get_status %}
+                                <a class="button is-small is-success" href="#"><b>DA</b></a>
+                                {% else %}
+                                <a class="button is-small is-warning" href="#"><b>NU</b></a>
+                                {% endif %}
+                            </td>
+                            <td width="1%">
+                              <a href="{% url 'Facturare-FacturaDetail' id=Factura.id %}">
+                                <div class="text-center">
+                                  <i class="fa-solid fa-eye text-danger fa-xl"></i>
+                                </div>
+                            </a>
+                          </td>
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div><br /><br /><br />
+    <div class="card has-background-white-ter text-center bg-dark ">
+        <header class="card-header">
+            <p class="card-header-title text-light">
+                Schimbă statusul facturilor!<br /> <br />Factura a fost achitată ?
+            </p>
+        </header>
+        <div class="card-content ">
+            <div class="select is-rounded mt-2">
+                <select class="bg-dark border-danger text-light " id="status" name="status">
+                    <option value="1">DA</option>
+                    <option value="0">NU</option>
+                </select>
+            </div>
+            <input class="btn btn-outline-danger text-light bg-danger rounded " type="submit" value="Schimbă status factură" name="mybtn">
+        </div>
+    </div>
+</form>
+
+{% endblock Continut3 %}

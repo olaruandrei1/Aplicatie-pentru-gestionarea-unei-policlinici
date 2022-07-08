@@ -1,0 +1,64 @@
+{% extends 'Gestiune/Extensie2.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block Titlu %} HOS - Adaugă pacient {% endblock Titlu %}
+
+{% block Continut2 %}
+<div class="container" style="width:115vh;">
+  <div class="row text-center">
+    <div class="col-log-12 col-sm">
+      <form method="POST" autocomplete="off" enctype="multipart/form-data" class="card p-3 mt-3 rounded" style="background-color: rgba(48, 48, 48);">
+        {{form|crispy}}
+        {% csrf_token %}
+
+    </div>
+
+
+    <div class="col-sm">
+      <button type="submit" class="btn btn-danger rounded w-50 mt-5" style="" id="btn-add">
+        {% block Btn-principal %}
+        <i class="fas fa-cloud-arrow-up"></i>&nbsp;&nbsp;<B>Adaugă</B>
+        {% endblock Btn-principal %}
+      </button>
+
+      {% block Btn-reseteaza %}
+      <button type="reset" class="btn btn-danger rounded w-50 mt-5" style="" id="btn-add"><i class="fa-solid fa-arrow-rotate-right text- light fa-xl"></i>&nbsp;&nbsp;<B>Resetează</B></button>
+      {% endblock Btn-reseteaza %}
+    </div>
+  </div>
+
+  <style>
+    #input {
+      background-color: black;
+    }
+  </style>
+  {% for message in messages %}
+
+  {% if message.tags == 'error' %}
+
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script>
+    var m = "{{ message }}";
+    swal("Ups!", m, "error")
+  </script>
+
+  {% endif %}
+  {% endfor %}
+
+  <!--ID ascuns-->
+  {% block Id-hidden %}
+
+  {% endblock Id-hidden %}
+  {% block Id-hidden-fp %}
+
+  {% endblock Id-hidden-fp %}
+  {% block Id-hidden-fpi %}
+
+  {% endblock Id-hidden-fpi %}
+
+  </form>
+</div>
+<a href="{% url 'Gestiune-PaginaPrincipala' %}" style=""><button class="btn btn-dark btn-sm rounded"><i class="fas fa-chevron-left"></i>&nbsp;&nbsp;Înapoi</button></a>
+</div>
+
+{% endblock Continut2 %}

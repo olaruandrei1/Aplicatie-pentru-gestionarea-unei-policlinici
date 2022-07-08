@@ -1,0 +1,113 @@
+{% extends 'Gestiune/Extensie.html' %}
+{% load static %}
+{% block Titlu %} HOS - Bine ai venit! {% endblock Titlu %}
+
+{% block Continut %}
+<div class="pt-5">
+  <div class="container pt-5 ">
+    <div class="row mt-5">
+
+      <div class="col-lg-4 pb-5 wow fadeInLeft slow">
+        <div class="card ho">
+          <div class="view overlay text-center">
+            <i class="fa-solid fa-fingerprint fa-2xl text-danger" style="margin-top: 25px;"></i>
+            <a href="{%url 'Conectare'%}">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+          <div class="card-body text-center">
+            <h3 class="card-title">Conectare</h3>
+            <p class="card-text">Bine ai revenit!
+              <br>
+              Să ai o zi superbă!&nbsp;<i class="fa-solid fa-heart-circle-check text-danger blink_me fa-xl"></i>
+            </p>
+          </div>
+          <div class="view overlay">
+            <img class="card-img-bottom" src="{% static 'Gestiune/Imagini/imaginecardunu.png' %}" alt="Health" />
+            <a href="{%url 'Conectare'%}">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 pb-5 wow fadeInDown slow text-center">
+        <div class="card ho">
+          <div class="view overlay">
+            <i class="fa-solid fa-user-check fa-2xl text-primary" style="margin-top: 25px;"></i>
+            <a href="{%url 'Inregistrare'%}">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Înregistrare</h3>
+            <p class="card-text">Bine ai venit!
+              <br>
+              Înainte de a trece la treabă, hai să-ți creăm un cont. Durează mai puțin de un minut.&nbsp;<i class="fa-solid fa-hourglass text-primary blink_me fa-xl"></i>
+            </p>
+          </div>
+          <div class="view overlay">
+            <img class="card-img-bottom" src="{% static 'Gestiune/Imagini/imaginecarddoii.png' %}" style="width: 272px;" alt="Health" />
+            <a href="{%url 'Inregistrare'%}">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 pb-5 wow fadeInRight slow text-center">
+        <div class="card ho">
+          <div class="view overlay">
+            <i class="fa-solid fa-briefcase fa-2xl text-success" style="margin-top: 25px;"></i>
+            <a href="{%url 'SistemdeConectare-Despre'%}">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">Despre <span class="text-success">H</span>ealth<span class="text-success">O</span class="text-success">laru<span class="text-success">S</span>ervices</h4>
+            <p class="card-text">
+              <br>
+              Află tot ce trebuie să știi despre HOS și despre HealthOlaruServices.&nbsp;<i class="fa-solid fa-user-astronaut blink_me text-success fa-xl"></i>
+            </p>
+          </div>
+          <div class="view overlay">
+            <img class="card-img-bottom" src="{% static 'Gestiune/Imagini/logo.png' %}" style="width: 313px; margin-left:55px;" alt="Health" />
+            <a href="{%url 'SistemdeConectare-Despre'%}">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<style type="text/css">
+  .ho:hover {
+    text-shadow: none !important;
+    box-sizing: border-box !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    -webkit-transform: scale(1.1) !important;
+    -ms-transform: scale(1.1) !important;
+    transform: scale(1.1) !important;
+    z-index=2;
+  }
+
+  body {
+    background-image: url({% static 'Gestiune/Imagini/wallpaginastart.jpg' %});
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+</style>
+
+
+{# <script>
+  $(document).ready(function() {
+    new WOW().init();
+  });
+</script> #}
+
+
+{% endblock Continut %}

@@ -1,0 +1,95 @@
+{% extends 'Gestiune/Extensie2.html' %}
+{% load static %}
+{% block Titlu %} HOS - OPIS {% endblock Titlu %}
+{% block Titlu-Pagina %}
+<h4 class="text-disable" style="margin-top:-4.1%;margin-left:14.3%">
+  OPIS
+</h4>
+{% endblock Titlu-Pagina %}
+
+{% block Continut2 %}
+<form>
+  <div class="input-group input-group-sm mb-3 mt-4">
+    <input name="q" type="text" class="" placeholder="Puteți introduce orice valoare, din orice tabelă:" value="{{request.GET.q}}">
+    <style>
+      input {
+        border: 0;
+        outline: 0;
+        background: transparent;
+        border-bottom: 1px solid black;
+        color: white;
+        width: 500px;
+      }
+    </style>
+    &nbsp;&nbsp;&nbsp;<button class="btn btn-danger"><i class="fa-brands fa-searchengin fa-xl"></i></button>
+    <a href="{% url 'Gestiune-PaginaOpis' %}" class="btn btn-dark" style="margin-left: 2px;"><i class="fas fa-sync-alt"></i></a>
+  </div>
+</form>
+<table class="table table-hover table-dark text-light text-center table-bordered border-light table-sm" style="font-size:10px;">
+  <thead>
+    <tr>
+      <th scope="col" style="width:9%">ID Prezentare</th>
+      <th scope="col" style="width:15%">Nume&Prenume</th>
+      <th scope="col" style="width:14%">CNP</th>
+      <th scope="col">Numar Telefon</th>
+      <th scope="col">Adresa de email</th>
+      <th scope="col">simptome_initiale</th>
+      <th scope="col" style="width:5%">optiune_specialitate</th>
+      <th scope="col" style="width:14%">optiune_Decizie</th>
+      <th scope="col">Înregistrată la</th>
+      <th scope="col"><i class="fa-solid fa-clipboard fa-xl"></i></th>
+
+    </tr>
+  </thead>
+  {% for Fise_Prezentare in prezentari %}
+  <tbody>
+    <tr scope="row" id="chk_td">
+      <td>{{ Fise_Prezentare.id }}</td>
+      <td>{{ Fise_Prezentare.pacient.numeprenumepacient }}</td>
+      <td>{{ Fise_Prezentare.CNP_Pacient }}</td>
+      <td>{{ Fise_Prezentare.pacient.telefon_Pacient }}</td>
+      <td>{{ Fise_Prezentare.pacient.emailPacient }}</td>
+      <td>{{ Fise_Prezentare.simptome_initiale }}</td>
+      <td>{{ Fise_Prezentare.optiune_specialitate }}</td>
+      <td>{{ Fise_Prezentare.optiune_Decizie }}</td>
+      <td>{{ Fise_Prezentare.created_at | date:'d/m/Y (H:i)' }}</td>
+      <td>
+        <a class="text-danger" href="/PaginaVizualizareFisaPrezentare/{{ Fise_Prezentare.id }}" title="Vezi Prezentare">
+          <i class="fa-solid fa-eye fa-xl"></i>
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+{% if is_paginated %}
+  {% if page_obj.has_previous %}
+    <a class=" btn btn-sm btn-outline-danger mb-4 "href="?page=1">Prima pagină</a>
+    <a class=" btn btn-sm btn-outline-danger mb-4 "href="?page={{ page_obg.previous_page_number}}">Prima pagină</a>
+  {% endif %}
+  {% for num in page_obj.paginator.page_range %}
+    {% if page_obj.number == num %}
+      <a class=" btn btn-sm btn-danger mb-4 "href="?page={{ num }}">{{ num }}</a>
+    {% elif num > page_obj.number|add:'-4' and num < page_obj.number|add:'+4' %}
+      <a class=" btn btn-sm btn-outline-danger mb-4 "href="?page={{ num }}">{{ num }}</a>
+    {% endif %}
+  {% endfor %}
+  {% if page_obj.has_next %}
+    <a class=" btn btn-sm btn-outline-danger mb-4 "href="?page={{ page_obg.next_page_number}}">Următoarea pagină</a>
+    <a class=" btn btn-sm btn-outline-danger mb-4 "href="?page={{ page_obg.paginator.num_pages}}">Ultima pagină</a>
+  {% endif %}
+{% endif %}
+
+    <!--ID ascuns-->
+    {% block Id-hidden %}
+
+    {% endblock Id-hidden %}
+    {% block Id-hidden-fp %}
+
+    {% endblock Id-hidden-fp %}
+    {% block Id-hidden-fpi %}
+
+    {% endblock Id-hidden-fpi %}
+
+{% endblock Continut2 %}

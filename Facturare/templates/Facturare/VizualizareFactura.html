@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block Titlu %} HOS - Vizualizarea facturii : {{factura_id}} {% endblock Titlu %}</title>
+    <link rel="stylesheet" href="{%static 'Facturare/CSS/factura-template.css' %}" media="all" />
+  </head>
+  <body class="">
+    <header class="clearfix">
+      <div id="logo">
+        <img src="{% static 'img/logo.png'%}" style="width: 134px; height:116px">
+      </div>
+      <div id="company">
+        <h1 class="name">{{company.name}}</h1>
+        <div>{{company.address}}</div>
+        <div>{{company.phone}}</div>
+        <div><a href="mailto:{{company.email}}">{{company.email}}</a></div>
+      </div>
+      </div>
+    </header>
+    <main>
+      <div id="details" class="clearfix">
+        <div id="client">
+          <div class="to">Factură eliberată pentru:</div>
+          <h2 class="name">{{pacient}}</h2>
+          <div class="address">{{adresa_facturare}}</div>
+          <div class="email"><a href="mailto:{{customer_email}}">{{pacient_email}}</a></div>
+        </div>
+        <div id="invoice">
+          <h1>#{{factura_id}}</h1>
+          <div class="date">Data emiterii: {{data_emitere}}</div>
+          <div class="date">Data maximă de achitare: {{data_expirare}}</div>
+        </div>
+      </div>
+      <table border="0" cellspacing="0" cellpadding="0">
+        <thead>
+          <tr>
+            <th class="no">Nr. Crt.</th>
+            <th class="desc">Descrierea servicilor utilizate:</th>
+            <th class="unit">Valoarea Monetară</th>
+            <th class="qty">Cantitate</th>
+            <th class="total">Total(fără TVA)</th>
+          </tr>
+        </thead>
+        <tbody>
+			{% for item in lineitem %}
+          <tr>
+            <td class="no">{{forloop.counter}}</td>
+            <td class="desc">{{item.descriere}}</td>
+            <td class="unit">{{item.valoare_monetara}}</td>
+            <td class="qty">{{item.cantitate}}</td>
+            <td class="total">{{item.amount}} RON</td>
+		  </tr>
+		  {% endfor %}
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2"></td>
+            <td colspan="2">SUBTOTAL</td>
+            <td>{{factura_total}} RON</td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+            <td colspan="2">TVA 0% - Asigurat CNAS</td>
+            <td>{{factura_total}} RON + 0 RON</td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+            <td colspan="2">Total </td>
+            <td>{{factura_total}} RON</td>
+          </tr>
+        </tfoot>
+      </table>
+      <div id="thanks">Vă mulțumim!</div>
+
+    </main>
+    <footer>
+      <div id="notices">
+        <div>Notă:</div>
+        <div class="notice">În cazul depășirii termenului maxim calendaristic pentru achitarea plății, veți dobândi dobânda de 5%/per zi lucrătoare timp de 30 de zile. În cazul neachitării după aceste 30 de zile, se vor contacta organele legale pentru recuperarea sumei + dobânda aferentă sumei!</div>
+      </div>
+        </footer>
+  </body>
+</html>
